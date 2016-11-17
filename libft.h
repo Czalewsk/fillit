@@ -6,7 +6,7 @@
 /*   By: czalewsk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 14:37:53 by czalewsk          #+#    #+#             */
-/*   Updated: 2016/11/14 20:01:18 by czalewsk         ###   ########.fr       */
+/*   Updated: 2016/11/16 16:36:11 by czalewsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,6 @@ size_t			ft_lstlen(t_list *lst);
 t_list			*ft_lst_newstr(char *str);
 t_list			**ft_strsplit_lst(char const *s, char c);
 void			*ft_memdup(const void *mem, size_t size);
+int				ft_square(int nb);
 
 #endif
