@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   file_to_str.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: czalewsk <czalewsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/15 12:45:14 by czalewsk          #+#    #+#             */
-/*   Updated: 2016/11/16 17:34:46 by czalewsk         ###   ########.fr       */
+/*   Created: 2016/11/16 15:11:35 by czalewsk          #+#    #+#             */
+/*   Updated: 2016/11/17 12:15:58 by czalewsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __FILLIT_H
-# define __FILLIT_H
+#include "fillit.h"
 
-#include "libft.h"
-#include <sys/uio.h>
-#include <sys/types.h>
-#include <stdio.h>
-#include <fcntl.h>
+char	*ft_get_it(char *name)
+{
+	int		fd;
+	char	buffer;
+	char	*str;
+	size_t	i;
 
-t_list		**ft_validate_file(char *str);
-t_list		**ft_create_list(char *str);
-char		*ft_get_it(char *name);
-t_list		*ft_get_coord(t_list *elem);
-
-#endif
+	str = ft_strnew(1000);
+	i = 0;
+	fd = open(name, O_RDONLY);
+	if (fd == -1)
+		ft_putendl_fd("error fd = -1", 2);
+	else
+		while (read(fd, &buffer, 1))
+			str[i++] = buffer;
+	return (str);
+}
